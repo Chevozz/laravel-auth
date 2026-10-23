@@ -1,0 +1,158 @@
+{
+  "info": {
+    "name": "Jeda Store - Upload manual",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Isi token, category_id, product_id. Pilih file lokal pada field image. Jangan jalankan sebelum memilih file."
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "category_id",
+      "value": ""
+    },
+    {
+      "key": "product_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Upload produk",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/products",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Produk Upload Praktikum",
+              "type": "text"
+            },
+            {
+              "key": "slug",
+              "value": "produk-upload-praktikum",
+              "type": "text"
+            },
+            {
+              "key": "category_id",
+              "value": "{{category_id}}",
+              "type": "text"
+            },
+            {
+              "key": "price",
+              "value": "25000",
+              "type": "text"
+            },
+            {
+              "key": "stock",
+              "value": "5",
+              "type": "text"
+            },
+            {
+              "key": "details[0]",
+              "value": "Foto lokal",
+              "type": "text"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ganti gambar (method spoofing)",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/products/{{product_id}}",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "_method",
+              "value": "PUT",
+              "type": "text"
+            },
+            {
+              "key": "name",
+              "value": "Produk Upload Praktikum",
+              "type": "text"
+            },
+            {
+              "key": "slug",
+              "value": "produk-upload-praktikum",
+              "type": "text"
+            },
+            {
+              "key": "category_id",
+              "value": "{{category_id}}",
+              "type": "text"
+            },
+            {
+              "key": "price",
+              "value": "25000",
+              "type": "text"
+            },
+            {
+              "key": "stock",
+              "value": "5",
+              "type": "text"
+            },
+            {
+              "key": "details[0]",
+              "value": "Foto lokal",
+              "type": "text"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
